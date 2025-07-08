@@ -19,7 +19,6 @@ public class TesteExcluir {
         ClienteController controller = new ClienteController();
         String email = "excluir@teste.com";
         String senha = "senha123";
-
         
         Cliente cliente = new Cliente();
         cliente.setEmail(email);
