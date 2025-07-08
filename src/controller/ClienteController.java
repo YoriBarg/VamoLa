@@ -27,10 +27,14 @@ public class ClienteController {
         List<Cliente> clientes = dao.listar();
         return clientes;
     }
-    public Cliente buscarCliente(String email, String csenha) throws SQLException{
+public Cliente buscarCliente(String email, String csenha) {
+    try {
         DAOCliente dao = new DAOCliente();
-        Cliente cliente = dao.getByEmail(email,csenha);
-        return cliente;
+        return dao.getByEmail(email, csenha);
+    } catch (SQLException e) {
+        System.err.println("Erro ao buscar cliente: " + e.getMessage());
+        return null;
+    }
 }
     public boolean excluirById(int Id){
         return new DAOCliente().excluirById(Id);

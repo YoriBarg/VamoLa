@@ -121,15 +121,21 @@ public class Excluir extends javax.swing.JFrame {
     String csenha = CampoSenha.getText();
 
     ClienteController controle = new ClienteController();
-    boolean sucesso = controle.excluirCliente(email, csenha);
-    if (sucesso) {
-    JOptionPane.showMessageDialog(null, "Conta excluída com sucesso!");
-    Menu tela = new Menu();
-    tela.setVisible(true);
-    this.dispose(); // Fecha a tela atual (TelaDeletarConta)
-    } else {
-    JOptionPane.showMessageDialog(null, "Email ou senha incorretos.");
-    }
+            Cliente cliente = controle.buscarCliente(email, csenha);
+
+        if (cliente != null) {
+            boolean sucesso = controle.excluirCliente(email, csenha);
+            if (sucesso) {
+                JOptionPane.showMessageDialog(null, "Conta excluída com sucesso!");
+                Menu tela = new Menu();
+                tela.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir a conta.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Email ou senha incorretos.");
+        }
             // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

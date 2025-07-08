@@ -14,7 +14,7 @@ import controller.ClienteController;
  *
  * @author yurib
  */
-public class LoginTeste {
+public class LoginTeste {//primeiro teste feito, aprimorei para testar mais coisas como permissão e ate usuario inexistente
  @Test
 public void testSalvarCliente() throws SQLException {
     Cliente cliente = new Cliente();

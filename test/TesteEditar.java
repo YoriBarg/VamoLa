@@ -17,22 +17,28 @@ public class TesteEditar {
 public void testAtualizarCliente() throws SQLException {
     ClienteController controller = new ClienteController();
     
+    String email = "editar@teste.com";
+    String senha = "senha123";
+    
     Cliente cliente = new Cliente();
-    cliente.setEmail("editar@teste.com");
-    cliente.setNome("Nome Antigo");
-    cliente.setCSenha("senha123");
-    cliente.setNomeTime("flamengo");
+    cliente.setEmail(email);
+    cliente.setNome("Rogerio");
+    cliente.setCSenha(senha);
+    cliente.setNomeTime("Flamengo");
     cliente.setPermissao(0);
     controller.salvarCliente(cliente);
 
-    boolean atualizado = controller.alterarCliente("editar@teste.com", "Nome Atualizado", "senha123", "Time Novo");
+    System.out.println("Nome antigo: " + cliente.getNome());
+    
+    boolean atualizado = controller.alterarCliente(email, "Cleito", senha, "Palmeiras");
     assertTrue("Falha ao atualizar cliente", atualizado);
 
-    Cliente clienteAtualizado = controller.buscarCliente("editar@teste.com", "senha123");
+    Cliente clienteAtualizado = controller.buscarCliente(email, senha);
     assertNotNull("Cliente não encontrado após atualização", clienteAtualizado);
-    assertEquals("Nome não atualizado corretamente", "Nome Atualizado", clienteAtualizado.getNome());
-    assertEquals("Time não atualizado corretamente", "Time Novo", clienteAtualizado.getNomeTime());
+    assertEquals("Nome não atualizado corretamente", "Cleito", clienteAtualizado.getNome());
+    assertEquals("Time não atualizado corretamente", "Palmeiras", clienteAtualizado.getNomeTime());
+    System.out.println("Nome atualizado: " + clienteAtualizado.getNome());
 
-    controller.excluirCliente("editar@teste.com", "senha123");
+    controller.excluirCliente(email, senha);
 }
 }
