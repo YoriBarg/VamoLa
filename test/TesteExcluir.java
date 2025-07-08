@@ -20,6 +20,7 @@ public class TesteExcluir {
         String email = "excluir@teste.com";
         String senha = "senha123";
 
+        
         Cliente cliente = new Cliente();
         cliente.setEmail(email);
         cliente.setNome("To Vivo");
