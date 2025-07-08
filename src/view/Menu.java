@@ -139,25 +139,21 @@ public class Menu extends javax.swing.JFrame {
     String csenha = CampoSenha.getText();
 
     ClienteController controle = new ClienteController();
-        try {
-            Cliente cliente = controle.buscarCliente(email, csenha);
-            if (cliente != null) {
+    Cliente cliente = controle.buscarCliente(email, csenha);
+    if (cliente != null) {
         Cliente.clienteLogado = cliente;
-            if (cliente.getPermissao() == 1) {
+        if (cliente.getPermissao() == 1) {
             TelaADM Adm = new TelaADM(cliente.getNome());
             Adm.setVisible(true);
-    } else {
-          InicioLogado tela = new InicioLogado(cliente.getNome());
+        } else {
+            InicioLogado tela = new InicioLogado(cliente.getNome());
             tela.setVisible(true);
         }
 
         this.dispose();
-        } else {
+    } else {
         JOptionPane.showMessageDialog(null, "Email ou senha incorretos.");
-        }
-        } catch (SQLException ex) {
-         Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-}
+    }
     }//GEN-LAST:event_BotaoLoginActionPerformed
 
     private void BotaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastroActionPerformed
